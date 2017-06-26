@@ -12,7 +12,7 @@ import rx.Observable;
 public interface MovieService {
     //    @GET("top250")
 //    Call<MovieEntity> getTopMoive(@Query("start") int start,@Query("count") int count);
-    @GET("top250")
-    Observable<MovieEntity> getTopMoive(@Query("start") int start, @Query("count") int count);
+
+
 
 }

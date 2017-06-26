@@ -19,7 +19,7 @@ import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "TAG";
     private Observable observable2;
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         resultTV = (TextView) findViewById(R.id.result_TV);
         clickMeBN = (Button) findViewById(R.id.click_me_BN);
-    clickMeBN.setOnClickListener(this);
+        clickMeBN.setOnClickListener(this);
 //        Observable observable=Observable.create(new Observable.OnSubscribe<Integer>() {
 //
 //            @Override
@@ -88,13 +88,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void getMovie() {
-        String baseUrl = "http://api.douban.com/v2/movie/";
-        Retrofit retrofit =new Retrofit.Builder()
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .baseUrl(baseUrl)
-                .build();
-        MovieService movieService = retrofit.create(MovieService.class);
+//
 //        Call<MovieEntity> call = movieService.getTopMoive(0, 10);
 //        call.enqueue(new Callback<MovieEntity>() {
 //            @Override
@@ -128,22 +122,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                    }
 //                });
 
-        subscriber = new Subscriber<MovieEntity>() {
-            @Override
-            public void onCompleted() {
 
-            }
-
-            @Override
-            public void onError(Throwable e) {
-
-            }
-
-            @Override
-            public void onNext(MovieEntity movieEntity) {
-                resultTV.setText(movieEntity.toString());
-            }
-        };
-        HttpMethods.getInstance().getTopMovie(subscriber,0,10);
     }
 }
